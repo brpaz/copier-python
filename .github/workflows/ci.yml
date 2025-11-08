@@ -48,8 +48,8 @@ jobs:
           echo "Checking essential files in: $OUTPUT_DIR"
 
           REQUIRED_FILES=(
-            "test-project/pyproject.toml"
-            "test-project/README.md"
+            "pyproject.toml"
+            "README.md"
           )
 
           MISSING=()
