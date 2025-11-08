@@ -1,0 +1,22 @@
+#  Refer for explanation to following link:
+#  https://github.com/evilmartians/lefthook/blob/master/docs/configuration.md
+pre-commit:
+  parallel: true
+  commands:
+    format:
+      glob: "*.{py}"
+      run: black {staged_files}
+      stage_fixed: true
+    lint:
+      glob: "*.py"
+      run: ruff check --fix {staged_files}
+      stage_fixed: true
+pre-push:
+  parallel: true
+  commands:
+    test:
+      run: pytest
+    commitlint:
+      run: |
+        CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+        commitlint --from origin/$CURRENT_BRANCH --to HEAD

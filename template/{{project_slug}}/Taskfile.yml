@@ -1,0 +1,43 @@
+# https://taskfile.dev
+
+version: "3"
+
+tasks:
+  default:
+    cmds:
+      - task -l
+
+  deps:
+    desc: "Install development dependencies with uv"
+    cmds:
+      - uv sync
+
+  format:
+    desc: "Format code"
+    cmds:
+      - black .
+
+  test:
+    desc: "Run tests"
+    cmds:
+      - pytest
+
+  lint:
+    desc: "Run linter"
+    cmds:
+      - ruff check
+
+  lint-fix:
+    desc: "Run linter and fix issues"
+    cmds:
+      - ruff check --fix
+
+  docs-serve:
+    desc: "Serve documentation with local server"
+    cmds:
+      - mkdocs serve
+
+  docs-build:
+    desc: "Build documentation site"
+    cmds:
+      - mkdocs build

@@ -1,0 +1,51 @@
+# https://docs.docker.com/build/ci/github-actions/examples/
+name: CI
+
+on:
+  push:
+    branches:
+      - "main"
+  pull_request:
+    branches:
+      - "main"
+  release:
+    types: [published]
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version-file: ".python-version"
+
+      - uses: astral-sh/setup-uv@v7
+
+      - name: Verify installations
+        run: |
+          python --version
+          uv --version
+
+      - name: Install tools
+        run: |
+          uv tool install ruff
+          uv tool install black
+          uv tool install pytest
+
+      - name: Install project dependencies
+        run: uv sync --locked
+
+      - name: Lint Format
+        run: uv tool run black --check .
+
+      - name: Lint Check
+        run: uv tool run ruff check
+
+      - name: Run tests
+        run: uv tool run pytest

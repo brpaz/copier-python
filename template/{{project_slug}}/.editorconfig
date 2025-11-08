@@ -1,0 +1,19 @@
+# http://editorconfig.org
+root = true
+
+[*]
+end_of_line = lf
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+[{*.py,*.pyi}]
+indent_size = 4
+indent_style = space
+
+[.*{yml,*.yaml, *.json}]
+indent_size = 2
+indent_style = space
+
+[*.md]
+trim_trailing_whitespace = false
