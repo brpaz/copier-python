@@ -27,8 +27,8 @@ To install Devenv, follow the instructions at [devenv.sh](https://devenv.sh/gett
 ### Running the Development Environment
 
 ```bash
-git clone https://github.com/brpaz/python-template.git
-cd python-template
+git clone https://github.com/{{ github_repository }}.git
+cd {{ project_slug }}
 direnv allow
 ```
 
