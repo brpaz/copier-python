@@ -31,6 +31,16 @@ project_url:
   help: The homepage URL for your project.
   default: "https://github.com/{{ github_repository }}"
 
+author_name:
+  type: str
+  help: The name of the project author.
+  default: Bruno Paz
+
+author_email:
+  type: str
+  help: The email address of the project author.
+  default: "oss@brunopaz.dev"
+
 # Global tasks
 _tasks:
   - "git init"
