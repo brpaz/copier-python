@@ -44,3 +44,4 @@ author_email:
 # Global tasks
 _tasks:
   - "git init"
+  - "uv lock"

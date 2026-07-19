@@ -20,7 +20,7 @@ tasks:
   test:
     desc: "Run tests"
     cmds:
-      - pytest
+      - uv run pytest
 
   lint:
     desc: "Run linter"
