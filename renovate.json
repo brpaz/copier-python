@@ -32,6 +32,13 @@
       "groupName": "non-major updates",
       "automerge": true,
       "platformAutomerge": true
+    },
+    {
+      "matchManagers": [
+        "github-actions"
+      ],
+      "groupName": "github-actions"
     }
-  ]
+  ],
+  "minimumReleaseAge": "3 days"
 }
